@@ -19,10 +19,14 @@
 
 <p>
   <strong>Cписок станций</strong>
-  <% if @rout.railway_stations.present? %>
-  <%= @rout.railway_stations_routs.each {|station| station.title} %>
+  <% if @rout.railway_stations.empty? %>
+  Список пуст
   <% else %>
-  Нет станций
+  <ul>
+    <% @rout.railway_stations.each do |station| %>
+      <li><%= station.title %></li>
+    <% end %>
+  </ul>
   <% end %>
 </p>
 

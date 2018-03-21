@@ -33,7 +33,7 @@ class TrainsController < ApplicationController
 
   def update
 
-    if @train.update(rout_params)
+    if @train.update(train_params)
       redirect_to @train
     else
       render :edit
