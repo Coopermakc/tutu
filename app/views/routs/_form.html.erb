@@ -1,0 +1,14 @@
+<%= form_for(@rout) do |form| %>
+<%= render 'common/errors', resource: @rout %>
+
+   <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title%>
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit "#{ @rout.new_record? ? 'Cоздать' : 'Изменить' }"%>
+  </div>
+<% end %>

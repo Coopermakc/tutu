@@ -1,17 +1,6 @@
 <h1>Добавить маршрут</h1>
 
-<%= form_for(@rout) do |form| %>
-  <% if @rout.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@rout.errors.count, "error") %> prohibited this railway_station from being saved:</h2>
-
-      <ul>
-      <% @rout.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render 'form' %>
 
   <div class="field">
     <%= form.label :title %>
@@ -21,6 +10,6 @@
   <div class="actions">
     <%= form.submit 'Создать'%>
   </div>
-<% end %>
+
 
 <%= link_to 'Назад', routs_path %>

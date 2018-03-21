@@ -37,7 +37,7 @@ class RoutsController < ApplicationController
 
   def destroy
     @rout.destroy
-    redirect_to trains_path
+    redirect_to routs_path
   end
 
   private
