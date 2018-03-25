@@ -1,0 +1,9 @@
+  <% @train.carriages.each do |carriage| %>
+  <li><td><%= "Номер вагона: #{carriage.number}" %></td>
+  <td><%= "Тип вагона: #{carriage.car_type}" %> </td>
+  <td><%= "Количество верхних мест: #{carriage.up_places}" %> </td>
+  <td><%= "Количество нижних мест: #{carriage.down_places}" %> </td>
+    </li>
+  <% end %>
+    
+  

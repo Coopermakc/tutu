@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Number:</strong>
+  <strong>Номер:</strong>
   <%= @train.number %>
 </p>
 <p>
@@ -19,6 +19,15 @@
   <%= @train.rout.title %>
   <% else %>
   Не назначен маршрут
+  <% end %>
+</p>
+
+<p>
+  <strong>Вагоны</strong>
+ <% if @train.carriages.present? %>
+    <%= render 'carriage' %>
+  <% else %>
+  Нет вагонов
   <% end %>
 </p>
 

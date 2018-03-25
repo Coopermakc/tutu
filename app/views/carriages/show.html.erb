@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Вагон</strong>
+  <%= @carriage.number %>
+  добавлен к поезду
+  <%= @carriage.train.number %>
+</p>
+
+<%= link_to 'Редактирование', edit_carriage_path(@carriage) %> |
+<%= link_to 'Назад', carriages_path %>
