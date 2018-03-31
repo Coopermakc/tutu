@@ -2,10 +2,19 @@
 
 <p>
   <strong>Вагон</strong>
-  <%= @carriage.number %>
   добавлен к поезду
   <%= @carriage.train.number %>
+  <li><%= "Номер вагона: #{@carriage.number}" %></li>
+  <li><%= "Тип вагона: #{@carriage.car_type}" %> </li>
+  <li><%= "Количество верхних мест: #{@carriage.up_seats}" %> </li>
+  <li><%= "Количество нижних мест: #{@carriage.down_seats}" %> </li>
 </p>
 
+
+  
+  
+    
+
+
 <%= link_to 'Редактирование', edit_carriage_path(@carriage) %> |
-<%= link_to 'Назад', carriages_path %>
+<%= link_to 'Назад', @carriage.train %>

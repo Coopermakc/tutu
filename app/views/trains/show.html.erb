@@ -21,14 +21,23 @@
   Не назначен маршрут
   <% end %>
 </p>
+<p>
+<%= link_to "Добавить вагон", new_train_carriage_path(@train) %>
+</p>
 
 <p>
   <strong>Вагоны</strong>
- <% if @train.carriages.present? %>
-    <%= render 'carriage' %>
-  <% else %>
-  Нет вагонов
+ <ul>
+  <% if @train.is_head? %>
+   <% @train.carriages.order(:number).each do |car| %>
+   <li><%= link_to "Вагон №#{car.number}", car %></li>
   <% end %>
+  <% else %>
+   <% @train.carriages.order(number: :desc).each do |car| %>
+   <li><%= link_to "Вагон №#{car.number}", car %></li>
+   <% end %>
+  <% end %>
+  </ul>
 </p>
 
 <%= link_to 'Редактировать', edit_train_path(@train) %> |

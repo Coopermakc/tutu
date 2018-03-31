@@ -1,4 +1,4 @@
-<%= form_for(@carriage) do |form| %>
+<%= form_for(@train, @carriage) do |form| %>
 <%= render 'common/errors', resource: @carriage %>
 
   <div class="field">
@@ -16,15 +16,15 @@
   </div>
 
   <div class="field">
-    <%= form.number_field :up_places, class: "form-control", placeholder: "Количество верхних мест" %>
+    <%= form.number_field :up_seats, class: "form-control", placeholder: "Количество верхних мест" %>
   </div>
 
   <div class="field">
-    <%= form.number_field :down_places, class: "form-control", placeholder: "Количество нижних мест" %>
+    <%= form.number_field :down_seats, class: "form-control", placeholder: "Количество нижних мест" %>
   </div>
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Создать"%>
   </div>
 <% end %>

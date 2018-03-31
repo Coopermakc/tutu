@@ -1,5 +1,5 @@
 class RailwayStationsController < ApplicationController
-  before_action :set_railway_station, only: [:show, :edit, :update, :destroy]
+  before_action :set_railway_station, only: [:show, :edit, :update, :destroy, :update_position]
 
   # GET /railway_stations
   # GET /railway_stations.json
@@ -40,26 +40,26 @@ class RailwayStationsController < ApplicationController
   # PATCH/PUT /railway_stations/1
   # PATCH/PUT /railway_stations/1.json
   def update
-    respond_to do |format|
       if @railway_station.update(railway_station_params)
-        format.html { redirect_to @railway_station, notice: 'Railway station was successfully updated.' }
-        format.json { render :show, status: :ok, location: @railway_station }
+       redirect_to @railway_station, notice: 'Railway station was successfull update.'
       else
-        format.html { render :edit }
-        format.json { render json: @railway_station.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
   # DELETE /railway_stations/1
   # DELETE /railway_stations/1.json
   def destroy
     @railway_station.destroy
-    respond_to do |format|
-      format.html { redirect_to railway_stations_url, notice: 'Railway station was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+     redirect_to railway_stations_url, notice: 'Railway station was successfully destroyed.'
   end
+
+  def update_position
+    @rout = Rout.find(params[:rout_id])
+    @railway_station.update_position(@rout, params[:position])
+    redirect_to @rout
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
