@@ -2,10 +2,13 @@ class CreateCarriages < ActiveRecord::Migration[5.1]
   def change
     create_table :carriages do |t|
       t.integer :number
-      t.string :car_type
-      t.integer :up_places
-      t.integer :down_places
-      t.integer :train_id
+      t.integer :up_seats
+      t.integer :down_seats
+      t.integer :side_up_seats
+      t.integer :side_down_seats
+      t.belongs_to :train
+      t.string :type
+
 
       t.timestamps
     end
