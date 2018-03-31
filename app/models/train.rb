@@ -7,4 +7,5 @@ class Train < ApplicationRecord
   has_many :carriages
 
   validates :number, presence: true
+
 end

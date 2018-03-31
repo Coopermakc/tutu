@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
-  resources :trains
-  resources :railway_stations
+  resources :trains do
+    resources :carriages, shallow: true
+  end
+
+  resources :railway_stations do
+    patch :update_position, on: :member
+  end
+
   resources :routs
   resources :carriages
+  resource :search, only: [:new, :show, :edit]
 
   get 'welcome/index'
   root 'welcome#index'
