@@ -1,16 +1,18 @@
-<%= form_for(@rout) do |form| %>
+<%= form_tag("/routs", method: "post") do %>
 <%= render 'common/errors', resource: @rout %>
 
-   <div class="field">
-    <%= form.text_field :title, class: "form-control", placeholder: "Название маршрута" %>
-  </div>
+   
   <div class="field">
-    <%= form.label :railway_station_ids, "Список станций" %>
-    <%= form.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {}, { multiple: true } %>
+    <%= label_tag :start_station_title, "Начальная станция" %>
+    <%= select_tag :start_station_title, options_for_select(RailwayStation.all.collect{ |r| [r.title] }) %>
+    <%= label :final_station_title, "Конечная" %>
+    <%= select_tag :final_station_title, options_for_select(RailwayStation.all.collect{ |r| [r.title] }) %>
+    <%= label :railway_station_ids, "Промежуточные станции" %>
+    <%= select_tag :railway_station_ids, options_for_select(RailwayStation.all.collect{ |r| [r.title, r.id] }), { multiple: true }  %>
   </div>
 
 
   <div class="actions">
-    <%= form.submit "#{ @rout.new_record? ? 'Cоздать' : 'Изменить' }"%>
+    <%= submit_tag "#{ @rout.new_record? ? 'Cоздать' : 'Изменить' }"%>
   </div>
 <% end %>

@@ -9,9 +9,12 @@ Rails.application.routes.draw do
 
   resources :routs
   resources :carriages
-  resource :search, only: [:new, :show, :edit]
+  resource :search, only: [:new, :show, :create]
 
   get 'welcome/index'
   root 'welcome#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root 'searches#show'
 end
+

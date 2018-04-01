@@ -1,3 +1,4 @@
+
 class RoutsController < ApplicationController
 
    before_action :set_rout, only: [:show, :edit, :update, :destroy]
@@ -15,6 +16,9 @@ class RoutsController < ApplicationController
 
   def create
     @rout = Rout.new(rout_params)
+
+    @rout.title = "#{params[:start_station_title]} - #{params[:final_station_title]}"
+
 
     if @rout.save
       redirect_to @rout
@@ -47,6 +51,6 @@ class RoutsController < ApplicationController
   end
 
   def rout_params
-    params.require(:rout).permit(:title, railway_station_ids: [])
+    params.permit(railway_station_ids: [])
   end
 end

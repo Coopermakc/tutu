@@ -1,10 +1,14 @@
 class SearchesController < ApplicationController
 
-  def index
+  def show
   end
   def new
   end
-  def show
+
+  def create
+    @trains = Search.search_trains(params[:start_station_id], params[:finish_station_id])
+    render :show
   end
+
 
 end
